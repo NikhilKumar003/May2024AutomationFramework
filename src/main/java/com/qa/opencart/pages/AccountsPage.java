@@ -24,8 +24,7 @@ public class AccountsPage {
 	public AccountsPage(WebDriver driver) {
 		this.driver =driver;
 		eleUtils = new ElementUtils(driver);
-		int i =10;
-	}
+		}
 	
 	public String getAccPageTitle() {
 		String title = eleUtils.waitforTitleContainsAndReturns(AppConstants.ACCOUNTS_PAGE_TITLE, AppConstants.DEFAULT_SHORT_TIME_OUT);
