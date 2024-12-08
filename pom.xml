@@ -17,7 +17,7 @@
     <maven.compiler.source>11</maven.compiler.source>
     <maven.compiler.target>11</maven.compiler.target>
     <extentreports-version> 5.0.8</extentreports-version>
- <!---->   <aspectj.version>1.9.19</aspectj.version>
+   <aspectj.version>1.9.19</aspectj.version>
   </properties>
 
   
@@ -51,11 +51,15 @@
         <artifactId>aspectjweaver</artifactId>
         <version>${aspectj.version}</version>
     </dependency>
-
+        <dependency>
+    <groupId>org.projectlombok</groupId>
+    <artifactId>lombok</artifactId>
+    <version>1.18.30</version> <!-- Use the latest version -->
+   
+</dependency>
   </dependencies>
-
-  <build>
-   <plugins>
+<build>
+<plugins>
         <plugin>
             <groupId>org.apache.maven.plugins</groupId>
             <artifactId>maven-compiler-plugin</artifactId>
@@ -63,10 +67,15 @@
             <configuration>
                 <source>11</source>
                 <target>11</target>
+                 <compilerArgs>
+                    <arg>--add-opens</arg>
+                    <arg>jdk.compiler/com.sun.tools.javac.processing=ALL-UNNAMED</arg>
+                </compilerArgs>
             </configuration>
+            
         </plugin>
-
-        <plugin>
+        
+         <plugin>
             <groupId>org.apache.maven.plugins</groupId>
             <artifactId>maven-surefire-plugin</artifactId>
             <version>2.20</version>
@@ -79,21 +88,22 @@
                     <suiteXmlFile>src/test/resources/testrunners/testng_regression.xml</suiteXmlFile>
                     <!-- <suiteXmlFile>${suiteXmlFile}</suiteXmlFile> -->
                 </suiteXmlFiles>
-               
-                <argLine>
+                 <argLine>
                    -javaagent:"${settings.localRepository}/org/aspectj/aspectjweaver/${aspectj.version}/aspectjweaver-${aspectj.version}.jar"
                 </argLine>
+             
             </configuration>
-            
-             <dependencies>
-        <dependency>
+        <dependencies>
+    
+    <dependency>
             <groupId>org.aspectj</groupId>
             <artifactId>aspectjweaver</artifactId>
             <version>${aspectj.version}</version>
         </dependency>
-    </dependencies>
-           
+</dependencies>    
+                  
         </plugin>
-    </plugins>
-  </build>
-</project>
+
+</plugins>
+</build>
+  </project>

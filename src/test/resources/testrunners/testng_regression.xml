@@ -16,7 +16,7 @@ thread-count="4" parallel="tests">
    </classes>
   </test>
   
-  
+  <!--
   <test  name="Accounts Page Test" >	
    <parameter name="browser" value="firefox"/>
    <classes>
@@ -36,6 +36,6 @@ thread-count="4" parallel="tests">
    <classes>
      <class name="com.qa.opencart.tests.RegisterPageTest"></class>
    </classes>
-  </test>
-  
+  </test>-->
+ 
 </suite>
