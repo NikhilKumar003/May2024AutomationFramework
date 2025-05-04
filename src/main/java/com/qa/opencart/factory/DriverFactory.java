@@ -83,6 +83,7 @@ public class DriverFactory {
 	 * simply create object of properties file & fileInput stream with file path and load file stream to prop object
 	 * @return
 	 */
+	
 	public Properties initProp() {
 		prop = new Properties();
 		FileInputStream ip =null;
